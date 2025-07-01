@@ -50,10 +50,13 @@
                         Devamını oku
                     </a>
 
+                    @can('update', $post)
                     <a href="{{ route('posts.edit', $post->id) }}" class="text-yellow-600 hover:underline">
                         Düzenle
                     </a>
+                    @endcan
 
+                    @can('delete', $post)
                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
                           onsubmit="return confirm('Silmek istediğine emin misin?')">
                         @csrf
@@ -62,6 +65,7 @@
                             Sil
                         </button>
                     </form>
+                    @endcan
                 </div>
             </div>
         @endforeach
